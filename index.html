@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="神寂·巡礼 v1.0 公测 — 第一人称心理恐怖游戏 · 双版本发布 · MIT 开源">
+<title>神寂·巡礼 — v1.0 公测 · 下载</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root { --gold: #d9be86; --txt: #cfd8e6; --dim: #6b7896; --line: rgba(110,128,180,.28); }
+  html { scroll-behavior: smooth; }
+  body {
+    background: radial-gradient(ellipse at 50% -20%, #1c2340 0%, #0a0c14 55%, #05060a 100%);
+    color: var(--txt);
+    font-family: "Noto Serif SC", "Songti SC", "STSong", serif;
+    min-height: 100vh; overflow-x: hidden;
+  }
+  #stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+  .wrap { position: relative; z-index: 1; max-width: 520px; margin: 0 auto; padding: 64px 20px 72px; }
+  header { text-align: center; margin-bottom: 40px; }
+  .moon {
+    width: 96px; height: 96px; border-radius: 50%;
+    background: radial-gradient(circle at 38% 35%, #f6f8ff 0%, #ccd7f4 45%, #93a5d0 100%);
+    box-shadow: 0 0 70px 20px rgba(160,180,235,.38), 0 0 160px 60px rgba(120,140,210,.13);
+    margin: 0 auto 30px; animation: breathe 6s ease-in-out infinite;
+  }
+  @keyframes breathe {
+    0%,100% { box-shadow: 0 0 70px 20px rgba(160,180,235,.38), 0 0 160px 60px rgba(120,140,210,.13); }
+    50% { box-shadow: 0 0 85px 28px rgba(170,190,240,.48), 0 0 190px 70px rgba(120,140,210,.18); }
+  }
+  h1 { font-size: 34px; letter-spacing: 12px; font-weight: 400; color: #eef2fb; text-indent: 12px; }
+  .sub { margin-top: 12px; font-size: 13px; letter-spacing: 5px; color: #8b98b6; }
+  .ver { margin-top: 6px; font-size: 12px; letter-spacing: 2px; color: var(--gold); }
+  .divider { width: 240px; height: 1px; margin: 38px auto 0; background: linear-gradient(90deg, transparent, #46557e, transparent); }
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity .8s ease, transform .8s ease; }
+  .reveal.show { opacity: 1; transform: none; }
+  .card {
+    background: rgba(21,26,44,.6); border: 1px solid var(--line); border-radius: 16px;
+    padding: 26px 24px; margin-bottom: 26px; backdrop-filter: blur(8px);
+    box-shadow: 0 10px 40px rgba(0,0,0,.35);
+  }
+  .card h2 { font-size: 18px; letter-spacing: 4px; color: #eef2fb; font-weight: 400; }
+  .card .desc { font-size: 12.5px; color: var(--dim); margin: 6px 0 4px; letter-spacing: 1px; line-height: 1.8; }
+  .tags { margin: 10px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; letter-spacing: 1px; color: #9fb0d4;
+    border: 1px solid rgba(120,140,190,.35); border-radius: 20px; padding: 3px 11px; margin: 0 6px 6px 0; }
+  .btn {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    width: 100%; padding: 14px 17px; margin-top: 11px;
+    background: rgba(48,58,92,.32); border: 1px solid rgba(110,128,180,.3);
+    border-radius: 11px; color: var(--txt); font-size: 14px; letter-spacing: 1px;
+    text-decoration: none; transition: all .25s ease;
+  }
+  .btn:hover { background: rgba(80,96,146,.42); border-color: rgba(160,180,235,.55); transform: translateY(-2px); }
+  .btn:active { transform: translateY(0); }
+  .btn .t { min-width: 0; }
+  .btn small { display: block; font-size: 11px; color: #7c89a8; margin-top: 3px; letter-spacing: 0;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .btn .arrow { color: var(--gold); font-size: 13px; flex-shrink: 0; }
+  .btn.primary { background: linear-gradient(135deg, rgba(130,105,55,.34), rgba(90,75,40,.28)); border-color: rgba(217,190,134,.5); }
+  .btn.primary:hover { background: linear-gradient(135deg, rgba(160,132,70,.42), rgba(110,90,48,.34)); }
+  .btn.primary .arrow { color: #f0d9a8; }
+  .group-label { font-size: 11px; letter-spacing: 4px; color: #5a6a8c; margin: 20px 0 4px; }
+  .sha { margin-top: 14px; padding: 11px 14px; border-radius: 9px;
+    background: rgba(10,13,24,.55); border: 1px dashed rgba(110,128,180,.25);
+    font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 10.5px;
+    color: #7c89a8; word-break: break-all; line-height: 1.7; }
+  .sha b { color: #9fb0d4; font-weight: 400; }
+  .copy { float: right; font-size: 10px; color: var(--gold); cursor: pointer;
+    border: 1px solid rgba(217,190,134,.4); border-radius: 6px; padding: 1px 8px;
+    font-family: inherit; letter-spacing: 1px; user-select: none; }
+  .copy:hover { background: rgba(217,190,134,.15); }
+  footer { text-align: center; margin-top: 36px; }
+  footer .l1 { font-size: 12px; letter-spacing: 3px; color: #55628a; }
+  footer .l2 { margin-top: 8px; font-size: 11px; letter-spacing: 1px; color: #3d4866; }
+  footer a { color: #55628a; text-decoration: none; border-bottom: 1px dotted #3d4866; }
+  footer a:hover { color: #8b98b6; }
+</style>
+</head>
+<body>
+
+<canvas id="stars"></canvas>
+
+<div class="wrap">
+
+  <header class="reveal show">
+    <div class="moon"></div>
+    <h1>神寂 · 巡礼</h1>
+    <div class="sub">同 一 座 庭 · 两 种 巡 礼</div>
+    <div class="ver">v1.0 公测 · MIT 开源 · Android 7.0+</div>
+    <div class="divider"></div>
+  </header>
+
+  <section class="card reveal">
+    <h2>◆ 神寂·巡礼 · 经典版</h2>
+    <div class="desc">第一人称心理恐怖。觐见外神伊赛德亚，应答九酒之问——答错者，脚下的边界将被抹除，直坠无界。</div>
+    <div class="tags">
+      <span class="tag">九酒之问</span><span class="tag">AI 自定义回答审判</span><span class="tag">巡礼札记</span><span class="tag">自研 OpenGL 渲染</span>
+    </div>
+    <a class="btn primary" href="https://githubproxy.cc/https://github.com/abc111xy/shenji-xunli/releases/download/v1.0/shenji-xunli-v1.0.apk">
+      <span class="t">⬇ 加速下载 APK<small>shenji-xunli-v1.0.apk · 8.3 MB · 国内直链</small></span>
+      <span class="arrow">下载 →</span>
+    </a>
+    <a class="btn" href="https://github.com/abc111xy/shenji-xunli/releases/download/v1.0/shenji-xunli-v1.0.apk">
+      <span class="t">GitHub 原始下载<small>海外网络或已有代理时使用</small></span>
+      <span class="arrow">→</span>
+    </a>
+    <div class="group-label">仓 库 地 址</div>
+    <a class="btn" href="https://gitee.com/xygzsq/shenji-xunli">
+      <span class="t">Gitee 仓库<small>gitee.com/xygzsq/shenji-xunli</small></span>
+      <span class="arrow">→</span>
+    </a>
+    <a class="btn" href="https://github.com/abc111xy/shenji-xunli">
+      <span class="t">GitHub 仓库<small>github.com/abc111xy/shenji-xunli</small></span>
+      <span class="arrow">→</span>
+    </a>
+    <div class="sha">
+      <span class="copy" onclick="cp(this,'bb774df50bc8b7a88a7896712103ca954fa9a74ac2c30568bfebce372fe802dc')">复制</span>
+      <b>SHA256</b><br>bb774df50bc8b7a88a7896712103ca954fa9a74ac2c30568bfebce372fe802dc
+    </div>
+  </section>
+
+  <section class="card reveal">
+    <h2>☾ 神寂·巡礼 · 月见</h2>
+    <div class="desc">旁支版本。体验重心由惊吓转向沉浸与共情：月白色板、熄灯式崩塌、月之哼鸣，以及那句只有你能看懂的札记。独立包名与签名，可与经典版同机共存。</div>
+    <div class="tags">
+      <span class="tag">诡美氛围</span><span class="tag">熄灯式崩塌</span><span class="tag">月之哼鸣</span><span class="tag">灵敏度/视野设置</span><span class="tag">月相 HUD</span>
+    </div>
+    <a class="btn primary" href="https://githubproxy.cc/https://github.com/abc111xy/shenji-luna/releases/download/v1.0/shenji-xunli-luna-v1.0.apk">
+      <span class="t">⬇ 加速下载 APK<small>shenji-xunli-luna-v1.0.apk · 9.5 MB · 国内直链</small></span>
+      <span class="arrow">下载 →</span>
+    </a>
+    <a class="btn" href="https://github.com/abc111xy/shenji-luna/releases/download/v1.0/shenji-xunli-luna-v1.0.apk">
+      <span class="t">GitHub 原始下载<small>海外网络或已有代理时使用</small></span>
+      <span class="arrow">→</span>
+    </a>
+    <div class="group-label">仓 库 地 址</div>
+    <a class="btn" href="https://gitee.com/xygzsq/shenji-luna">
+      <span class="t">Gitee 仓库<small>gitee.com/xygzsq/shenji-luna</small></span>
+      <span class="arrow">→</span>
+    </a>
+    <a class="btn" href="https://github.com/abc111xy/shenji-luna">
+      <span class="t">GitHub 仓库<small>github.com/abc111xy/shenji-luna</small></span>
+      <span class="arrow">→</span>
+    </a>
+    <div class="sha">
+      <span class="copy" onclick="cp(this,'15bf48e9aa7572dc628372b726867b9b496da25715387cc318e104f32e98c2f0')">复制</span>
+      <b>SHA256</b><br>15bf48e9aa7572dc628372b726867b9b496da25715387cc318e104f32e98c2f0
+    </div>
+  </section>
+
+  <section class="card reveal">
+    <h2>❖ 玩法一瞥</h2>
+    <div class="desc" style="margin-top:10px">
+      祂不接受套话。九酒之问的第四行写着「自定义回答」——你的话将由大模型以伊赛德亚的身份亲自审判：判你精准，庭中月色微亮；判你硬撑，世界一寸寸暗下去。<br><br>
+      技术栈：纯 Java + OpenGL ES 2.0 自研渲染，零引擎依赖。全部源码 MIT 协议公开。
+    </div>
+  </section>
+
+  <footer class="reveal">
+    <div class="l1">佩加神话企划 · 边界与谎言之庭</div>
+    <div class="l2">反馈与建议请至仓库 <a href="https://gitee.com/xygzsq/shenji-xunli/issues">Issues</a> ｜ © 2026 · MIT License</div>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  var cv = document.getElementById('stars'), cx = cv.getContext('2d'), W, H, ps = [];
+  function rs() { W = cv.width = innerWidth; H = cv.height = innerHeight; }
+  addEventListener('resize', rs); rs();
+  for (var i = 0; i < 90; i++) ps.push({
+    x: Math.random(), y: Math.random(), r: Math.random() * 1.4 + .3,
+    v: Math.random() * .00016 + .00005, p: Math.random() * Math.PI * 2
+  });
+  (function tick(t) {
+    cx.clearRect(0, 0, W, H);
+    for (var i = 0; i < ps.length; i++) {
+      var s = ps[i]; s.y -= s.v; if (s.y < -0.02) { s.y = 1.02; s.x = Math.random(); }
+      var a = .25 + .35 * Math.abs(Math.sin(t / 1400 + s.p));
+      cx.beginPath(); cx.arc(s.x * W, s.y * H, s.r, 0, 7);
+      cx.fillStyle = 'rgba(190,205,240,' + a + ')'; cx.fill();
+    }
+    requestAnimationFrame(tick);
+  })(0);
+})();
+(function () {
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } });
+  }, { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+})();
+function cp(el, txt) {
+  (navigator.clipboard ? navigator.clipboard.writeText(txt) : Promise.reject())
+    .then(function () { el.textContent = '已复制'; setTimeout(function () { el.textContent = '复制'; }, 1600); })
+    .catch(function () {
+      var ta = document.createElement('textarea'); ta.value = txt;
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); el.textContent = '已复制'; } catch (e) { el.textContent = '失败'; }
+      document.body.removeChild(ta);
+      setTimeout(function () { el.textContent = '复制'; }, 1600);
+    });
+}
+</script>
+
+</body>
+</html>
